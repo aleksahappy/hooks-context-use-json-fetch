@@ -21,7 +21,7 @@ export default function useJsonFetch(url, opts) {
           throw new Error(`Ошибка сети (${response.status} ${response.statusText})`);
         }
       } catch(error) {
-        setError(error.toString());
+        setError(error.message);
       } finally {
         setLoading(false);
       }

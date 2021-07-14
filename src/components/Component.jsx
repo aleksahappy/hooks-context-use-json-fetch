@@ -4,7 +4,6 @@ import useJsonFetch from '../hooks/useJsonFetch';
 export default function Data({endpoint, opts}) {
   const [data, loading, error] = useJsonFetch(`${process.env.REACT_APP_MAIN_URL}${endpoint}`, opts);
   const title = endpoint[0].toUpperCase() + endpoint.slice(1);
-  // console.log(data, loading, error);
 
   const showData = (data) => {
     let result = [];
@@ -18,12 +17,12 @@ export default function Data({endpoint, opts}) {
     <div className="component">
       <div className="component-title">{title}-block</div>
       <div className="component-result">
+        {error && error}
         {loading ? (
           <div className="loader"></div>
         ) : (
           data && showData(data)
         )}
-        {error && error}
       </div>
     </div>
   )
